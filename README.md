@@ -50,24 +50,27 @@ Início ........................ pesquisa com calendário, agenda em destaque,
 ### Básicas
 
 - Agenda de eventos, por ordem cronológica e agrupada por dia
-- Pesquisa por palavra-chave, data e categoria, com filtros (hoje, amanhã, fim de semana, gratuitos)
-- Página de cada evento com foto, descrição, data, hora, local, preço e link oficial de bilhetes
+- Pesquisa por palavra-chave, data e categoria, com calendário no "Quando?" e atalhos (hoje, amanhã, fim de semana, gratuitos)
+- Página de cada evento com foto, descrição, data, hora, local, preço, organizador e ligação para os bilhetes no site oficial
+- "Perto do evento": onde comer, cafés, o que visitar e o que fazer depois, ordenados por distância
 - Categorias e subcategorias de eventos
-- Favoritos guardados no navegador
+- "Faz o teu plano": sugestão de programa a partir das preferências do utilizador
+- Mapa interativo com eventos e pontos de interesse
+- Guias "Explorar Coimbra"
+- Favoritos guardados no navegador e botão para partilhar o evento
 - Formulário "Publicar evento", com validação e estado "pendente de aprovação"
 - Área "Trabalhar em Eventos": oportunidades, candidatura e pedido de equipa
 - Área de gestão para aprovar ou rejeitar pedidos
 - Formulário de contactos
-- Navegação com menu, caminho de navegação e site adaptado a computador e telemóvel
+- Navegação com menu, botão Voltar e caminho de navegação, com o site adaptado a computador e telemóvel
 - Acessibilidade (descrições nas imagens, navegação por teclado, formulários legíveis por leitores de ecrã)
 
 ### Extras
 
-- Calendário para escolher um dia ou um intervalo de datas
-- "Faz o teu plano": sugestão de programa a partir das preferências do utilizador
-- "Perto do evento": restaurantes, cafés e monumentos ordenados por distância
-- Mapa interativo com eventos e pontos de interesse
-- Guias "Explorar Coimbra"
+- Adicionar um evento ao calendário do telemóvel (Google Calendar, Apple)
+- Modo escuro
+- Filtro por preço máximo na agenda
+- Avaliações dos eventos e dos lugares pelos utilizadores, guardadas no navegador
 - Versão em inglês (PT | EN)
 
 ## Esquemas

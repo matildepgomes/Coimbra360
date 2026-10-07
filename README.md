@@ -72,25 +72,25 @@ Início ........................ pesquisa com calendário, agenda em destaque,
 
 ## Esquemas
 
-Os esquemas foram feitos no [draw.io](https://app.diagrams.net) com a biblioteca de formas Mockups. O ficheiro original está em [`docs/mockups/coimbra360.drawio`](docs/mockups/coimbra360.drawio) e tem um separador para cada esquema: a página inicial e a página de um evento, cada uma em telemóvel e em computador. Na mesma pasta está a exportação de cada separador em imagem.
+Os esquemas foram feitos no [draw.io](https://app.diagrams.net) com a biblioteca de formas Mockups. O ficheiro original está em [`mockups/coimbra360.drawio`](mockups/coimbra360.drawio) e tem um separador para cada esquema: a página inicial e a página de um evento, cada uma em telemóvel e em computador. Na mesma pasta está a exportação de cada separador em imagem.
 
 No telemóvel, cada página aparece em vários ecrãs, pela ordem em que se desce: a página inicial vai do topo até ao rodapé e termina com o menu aberto, e a página do evento mostra o topo, a informação e o fim da página. As fotografias aparecem como espaços reservados e as notas a laranja explicam o que fazem alguns elementos.
 
 ### Página inicial: _Mobile_
 
-![Página inicial em telemóvel](docs/mockups/inicio-mobile.png)
+![Página inicial em telemóvel](mockups/inicio-mobile.png)
 
 ### Página inicial: _Desktop_
 
-![Página inicial em computador](docs/mockups/inicio-desktop.png)
+![Página inicial em computador](mockups/inicio-desktop.png)
 
 ### Evento: _Mobile_
 
-![Página de um evento em telemóvel](docs/mockups/evento-mobile.png)
+![Página de um evento em telemóvel](mockups/evento-mobile.png)
 
 ### Evento: _Desktop_
 
-![Página de um evento em computador](docs/mockups/evento-desktop.png)
+![Página de um evento em computador](mockups/evento-desktop.png)
 
 ## Referencias
 

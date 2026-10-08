@@ -95,11 +95,6 @@ No telemóvel, cada página aparece em vários ecrãs, pela ordem em que se desc
 
 ![Página de um evento em computador](mockups/evento-desktop.png)
 
-## Referencias
-
-_Websites_ que serviram de referência e o que se aproveitou de cada um.
-
-_Website_:
 
 ## Referências
 

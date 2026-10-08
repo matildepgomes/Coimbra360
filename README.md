@@ -14,10 +14,10 @@ Projeto da unidade curricular **Desenvolvimento para a Web**, da Licenciatura em
 ## Projeto
 
 O Coimbra 360 é uma plataforma que reúne num só lugar os eventos, a cultura e os lugares a descobrir em Coimbra. 
-Permite pesquisar eventos por data ou categoria, ver o local, horário e preço, quando aplicável aceder ao link oficial de bilhetes e encontrar sugestões perto de cada evento. 
+Permite pesquisar eventos por data ou categoria, ver o local, horário e preço, quando aplicável aceder ao _link_ oficial de bilhetes e encontrar sugestões perto de cada evento. 
 Inclui ainda guias da cidade, um mapa, um planeador de programas e uma área para organizadores publicarem eventos e pedirem staff para eventos.
 
-## Estrutura do website
+## Estrutura do _website_
 
 O menu aparece em todas as páginas, com o botão Publicar evento sempre em destaque. 
 No telemóvel, o menu abre a partir do botão de menu. 
@@ -75,7 +75,7 @@ Início ........................ pesquisa com calendário, agenda em destaque,
 
 ## Esquemas
 
-Os esquemas foram feitos no [draw.io](https://app.diagrams.net) com a biblioteca de formas Mockups. O ficheiro original está em [`mockups/coimbra360.drawio`](mockups/coimbra360.drawio) e tem um separador para cada esquema: a página inicial e a página de um evento, cada uma em telemóvel e em computador. Na mesma pasta está a exportação de cada separador em imagem.
+Os esquemas foram feitos no [draw.io](https://app.diagrams.net) com a biblioteca de formas Mockups. O ficheiro original está em [`mockups/coimbra-360.drawio`](mockups/coimbra-360.drawio) e tem um separador para cada esquema: a página inicial e a página de um evento, cada uma em telemóvel e em computador. Na mesma pasta está a exportação de cada separador em imagem.
 
 No telemóvel, cada página aparece em vários ecrãs, pela ordem em que se desce: a página inicial vai do topo até ao rodapé e termina com o menu aberto, e a página do evento mostra o topo, a informação e o fim da página. As fotografias aparecem como espaços reservados e as notas a laranja explicam o que fazem alguns elementos.
 
@@ -101,7 +101,15 @@ _Websites_ que serviram de referência e o que se aproveitou de cada um.
 
 _Website_:
 
-- [Airbnb](https://www.airbnb.pt/): Pesquisa numa só barra com vários campos e cartões grandes com fotografia. 
-- [Time Out Portugal](https://www.timeout.pt/): Agenda organizada por dias e secções de "o que fazer" com destaques. 
-- [Agenda Cultural de Lisboa](https://www.agendalx.pt/): Filtros por data e categoria e página de evento com toda a informação prática. 
-- [Eventbrite](https://www.eventbrite.pt/): Caixa de bilhetes ao lado da descrição, com o botão de compra sempre visível. 
+## Referências
+
+Websites que serviram de referência e o que se aproveitou de cada um:
+
+- [Airbnb](https://www.airbnb.pt/): pesquisa numa só barra com vários campos e cartões grandes com fotografia.
+- [Time Out Portugal](https://www.timeout.pt/): agenda organizada por dias e secções de "o que fazer" com destaques.
+- [Eventbrite](https://www.eventbrite.pt/): página de evento com a informação prática e caixa de bilhetes com o botão de compra sempre visível.
+- [Google Maps](https://www.google.com/maps): mapa com pontos de interesse e distâncias a pé, usado no Mapa e em "Perto do evento".
+- [Visit Lisboa](https://www.visitlisboa.com/): guias da cidade e sugestões de lugares a visitar, base para Explorar Coimbra.
+- [Indeed](https://pt.indeed.com/): lista de oportunidades e formulário de candidatura, base para Trabalhar em Eventos.
+- [Coimbragenda](https://www.coimbragenda.pt/): agenda de eventos de Coimbra e organização por datas e categorias.
+- [TAGV](https://tagv.pt/): programação de espetáculos e apresentação da informação de cada sessão.

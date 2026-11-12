@@ -65,6 +65,8 @@ Início ........................ pesquisa com calendário, agenda em destaque,
 - Navegação com menu, botão Voltar e caminho de navegação, com o site adaptado a computador e telemóvel
 - Acessibilidade (descrições nas imagens, navegação por teclado, formulários legíveis por leitores de ecrã)
 
+
+
 ### Extras
 
 - Adicionar um evento ao calendário do telemóvel (Google Calendar, Apple)

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orquestra de Câmara · Coimbra 360</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="css/coimbra.css">
+  <script src="js/menu.js" defer></script>
+</head>
+<body class="fundo-creme texto-grafite antialiased">
+
+  <!-- Cabeçalho (sticky top-0: fica preso no topo ao fazer scroll) -->
+  <header class="sticky top-0 z-30 bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <a href="index.html">
+        <img src="imagens/logo/coimbra-360.png" alt="Coimbra 360, página inicial" class="logo">
+      </a>
+      <!-- Botão do menu: só aparece no telemovel-->
+      <button type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" class="md:hidden rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 aria-expanded:bg-slate-900 aria-expanded:text-white aria-expanded:border-slate-900">
+        <span id="menu-icone" aria-hidden="true">☰</span> Menu
+      </button>
+      <nav id="menu-principal" class="hidden md:block w-full md:w-auto">
+        <ul class="flex flex-col md:flex-row md:items-center gap-1 text-sm border-t border-slate-200 pt-3 md:border-0 md:pt-0">
+          <li><a href="index.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Início</a></li>
+          <li><a href="eventos.html" aria-current="page" class="block px-3 py-1.5 link-ativo font-medium">Eventos</a></li>
+          <li><a href="descobrir.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Explorar Coimbra</a></li>
+          <li><a href="mapa.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Mapa</a></li>
+          <li><a href="trabalhar.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Trabalhar em Eventos</a></li>
+          <li><a href="favoritos.html" class="block rounded-full px-3 py-1.5 text-lg hover:bg-slate-100">♡<span class="sr-only">Favoritos</span></a></li>
+          <li><a href="publicar.html" class="block rounded-full px-5 py-2 botao-escuro font-semibold">Publicar evento</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-8">
+
+    <!-- Voltar e caminho de navegação -->
+    <nav class="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+      <a href="eventos.html" class="rounded-full menu-ativo font-semibold px-3 py-1">← Voltar</a>
+      <span><a href="index.html" class="hover:underline">Início</a> <span aria-hidden="true">/</span> <a href="eventos.html" class="hover:underline">Eventos</a> <span aria-hidden="true">/</span> <a href="eventos.html" class="hover:underline">Música</a> <span aria-hidden="true">/</span> <span class="text-slate-900">Orquestra de Câmara: de Vivaldi a Piazzolla</span></span>
+    </nav>
+
+    <div class="flex flex-col gap-2">
+      <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Música · Música clássica</p>
+      <h1 class="titulo-evento">Orquestra de Câmara: de Vivaldi a Piazzolla</h1>
+    </div>
+
+    <img src="imagens/convento-sao-francisco.jpg" alt="Igreja do Convento São Francisco, onde se realiza o concerto" class="foto-evento">
+    <p class="text-xs text-slate-500 -mt-2">Convento São Francisco. Fotografia: Wikimedia Commons.</p>
+
+    <div class="grid gap-8 lg:grid-cols-[1fr_20rem] items-start">
+      <article class="min-w-0 flex flex-col gap-6">
+        <p class="text-lg">Um programa que atravessa três séculos, na grande sala do Convento São Francisco.</p>
+        <p class="text-slate-600">A Orquestra de Câmara do Centro começa pelas Quatro Estações de Vivaldi e termina com os tangos de Piazzolla. O concerto dura cerca de 90 minutos, com intervalo. As portas abrem meia hora antes.</p>
+        <!-- Informação essencial do evento -->
+        <dl class="border-t border-slate-200">
+          <div class="linha-info border-b border-slate-200">
+            <dt class="rotulo-info text-xs uppercase tracking-widest font-semibold text-slate-500">Data</dt>
+            <dd>Sábado, 14 de novembro</dd>
+          </div>
+          <div class="linha-info border-b border-slate-200">
+            <dt class="rotulo-info text-xs uppercase tracking-widest font-semibold text-slate-500">Hora</dt>
+            <dd>21:00</dd>
+          </div>
+          <div class="linha-info border-b border-slate-200">
+            <dt class="rotulo-info text-xs uppercase tracking-widest font-semibold text-slate-500">Local</dt>
+            <dd>Convento São Francisco<span class="block text-sm text-slate-500">Avenida da Guarda Inglesa, Santa Clara</span></dd>
+          </div>
+          <div class="linha-info border-b border-slate-200">
+            <dt class="rotulo-info text-xs uppercase tracking-widest font-semibold text-slate-500">Preço</dt>
+            <dd>18 €</dd>
+          </div>
+          <div class="linha-info border-b border-slate-200">
+            <dt class="rotulo-info text-xs uppercase tracking-widest font-semibold text-slate-500">Organização</dt>
+            <dd>Orquestra de Câmara do Centro (demonstração)</dd>
+          </div>
+        </dl>
+      </article>
+
+      <!-- Caixa dos bilhetes -->
+      <aside class="lg:sticky lg:top-24 rounded-lg fundo-areia p-6 flex flex-col gap-3">
+        <h2 class="text-4xl">18 €</h2>
+        <p class="text-sm text-slate-600">Sábado, 21:00 · Convento São Francisco</p>
+        <a href="https://www.coimbraconvento.pt/pt/agenda/" class="rounded botao-terracota-claro font-semibold px-4 py-2.5 text-center">Bilhetes no site oficial ↗</a>
+        <p class="text-xs text-slate-500">Evento demonstrativo, criado para um projeto académico. O Coimbra 360 não vende bilhetes.</p>
+      </aside>
+    </div>
+
+    <!-- Perto do evento -->
+    <section class="flex flex-col gap-4">
+      <div class="flex flex-wrap items-end justify-between gap-2">
+        <div class="flex flex-col gap-1">
+          <h2 class="text-3xl">Perto do evento</h2>
+          <p class="text-slate-500">Sugestões a poucos minutos de Convento São Francisco.</p>
+        </div>
+      </div>
+      <h3 class="text-xl border-b border-slate-300 py-2">Onde comer</h3>
+      <ul class="grid gap-x-6 md:grid-cols-2">
+          <li class="py-4 flex flex-col gap-1 border-b border-slate-200">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+              <h3 class="text-lg">Arcadas, Quinta das Lágrimas</h3>
+              <span class="text-xs text-slate-500 tabular-nums">490 m · 6 min a pé</span>
+            </div>
+            <p class="text-sm text-slate-600">Restaurante do hotel, para uma ocasião especial.</p>
+          </li>
+          <li class="py-4 flex flex-col gap-1 border-b border-slate-200">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+              <h3 class="text-lg">Zé Manel dos Ossos</h3>
+              <span class="text-xs text-slate-500 tabular-nums">540 m · 7 min a pé</span>
+            </div>
+            <p class="text-sm text-slate-600">Tasca pequena e muito procurada.</p>
+          </li>
+          <li class="py-4 flex flex-col gap-1 border-b border-slate-200">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+              <h3 class="text-lg">Solar do Bacalhau</h3>
+              <span class="text-xs text-slate-500 tabular-nums">660 m · 8 min a pé</span>
+            </div>
+            <p class="text-sm text-slate-600">Bacalhau em várias versões, na Rua da Sota.</p>
+          </li>
+          <li class="py-4 flex flex-col gap-1 border-b border-slate-200">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+              <h3 class="text-lg">O Trovador</h3>
+              <span class="text-xs text-slate-500 tabular-nums">670 m · 8 min a pé</span>
+            </div>
+            <p class="text-sm text-slate-600">Restaurante tradicional ao lado da Sé Velha.</p>
+          </li>
+      </ul>
+    </section>
+
+    <!-- Outros eventos -->
+    <section class="flex flex-col gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-2 border-b border-slate-300 py-2">
+          <div class="flex flex-col gap-1">
+            <h2 class="text-3xl">Também em Coimbra</h2>
+            <p class="text-slate-500">Outros eventos dos próximos dias.</p>
+          </div>
+          <a href="eventos.html" class="text-sm font-semibold hover:underline">Ver agenda completa →</a>
+        </div>
+      <ul class="grid gap-6 sm:grid-cols-3">
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/se-velha.jpg" alt="Fachada da Sé Velha de Coimbra" class="foto-cartao">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Hoje</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">12</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Música</p>
+                  <h3 class="text-xl leading-tight">Serenata de Outono na Sé Velha</h3>
+                  <p class="text-sm text-slate-500">21:30 · Largo da Sé Velha</p>
+                  <p class="text-sm font-semibold">Grátis</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/mosteiro-santa-cruz.jpg" alt="Praça 8 de Maio e Mosteiro de Santa Cruz" class="foto-cartao">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Hoje</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">12</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Tradições, Feiras e Mercados</p>
+                  <h3 class="text-xl leading-tight">Mercado ao Fim da Tarde</h3>
+                  <p class="text-sm text-slate-500">18:00 · Mercado Municipal D. Pedro V</p>
+                  <p class="text-sm font-semibold">Grátis</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/rua-quebra-costas.jpg" alt="Rua do Quebra Costas" class="foto-cartao">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Hoje</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">12</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Festas e Vida Noturna</p>
+                  <h3 class="text-xl leading-tight">Jazz no Salão: Trio de Outono</h3>
+                  <p class="text-sm text-slate-500">22:30 · Salão Brazil</p>
+                  <p class="text-sm font-semibold">8 €</p>
+                </div>
+              </div>
+            </a>
+          </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="fundo-azul mt-8">
+    <div class="mx-auto max-w-6xl px-4 py-12 grid gap-8 lg:grid-cols-2">
+      <div class="flex flex-col items-start gap-4">
+        <img src="imagens/logo/coimbra-360-completo.png" alt="Coimbra 360, a cidade toda, num só lugar" class="logo-rodape">
+        <p class="text-sm text-slate-600">Agenda, cultura, gastronomia e lugares para descobrir em Coimbra.</p>
+      </div>
+      <div class="grid gap-6 grid-cols-2 sm:grid-cols-3">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Agenda</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="eventos.html" class="hover:underline">Hoje</a></li>
+            <li><a href="eventos.html" class="hover:underline">Este fim de semana</a></li>
+            <li><a href="eventos.html" class="hover:underline">Gratuitos</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Coimbra</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="descobrir.html" class="hover:underline">Explorar Coimbra</a></li>
+            <li><a href="descobrir.html" class="hover:underline">48 horas em Coimbra</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Participar</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="publicar.html" class="hover:underline">Publicar evento</a></li>
+            <li><a href="trabalhar.html" class="hover:underline">Trabalhar em eventos</a></li>
+            <li><a href="trabalhar.html#preciso-de-equipa" class="hover:underline">Preciso de equipa</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex flex-wrap justify-between gap-2 border-t border-slate-300">
+      <p> 2026 Coimbra 360</p>
+      <p> Projeto académico de Desenvolvimento para a Web · Eventos em Coimbra </p>
+    </div>
+  </footer>
+</body>
+</html>

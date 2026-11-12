@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalhar em Eventos · Coimbra 360</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="css/coimbra.css">
+  <script src="js/menu.js" defer></script>
+</head>
+<body class="fundo-creme texto-grafite antialiased">
+
+  <!-- Cabeçalho (sticky top-0: fica preso no topo ao fazer scroll) -->
+  <header class="sticky top-0 z-30 bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <a href="index.html">
+        <img src="imagens/logo/coimbra-360.png" alt="Coimbra 360, página inicial" class="logo">
+      </a>
+      <!-- Botão do menu: só aparece no telemóvel -->
+      <button type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" class="md:hidden rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 aria-expanded:bg-slate-900 aria-expanded:text-white aria-expanded:border-slate-900">
+        <span id="menu-icone" aria-hidden="true">☰</span> Menu
+      </button>
+      <nav id="menu-principal" class="hidden md:block w-full md:w-auto">
+        <ul class="flex flex-col md:flex-row md:items-center gap-1 text-sm border-t border-slate-200 pt-3 md:border-0 md:pt-0">
+          <li><a href="index.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Início</a></li>
+          <li><a href="eventos.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Eventos</a></li>
+          <li><a href="descobrir.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Explorar Coimbra</a></li>
+          <li><a href="mapa.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Mapa</a></li>
+          <li><a href="trabalhar.html" aria-current="page" class="block px-3 py-1.5 link-ativo font-medium">Trabalhar em Eventos</a></li>
+          <li><a href="favoritos.html" class="block rounded-full px-3 py-1.5 text-lg hover:bg-slate-100">♡<span class="sr-only">Favoritos</span></a></li>
+          <li><a href="publicar.html" class="block rounded-full px-5 py-2 botao-escuro font-semibold">Publicar evento</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8 flex flex-col gap-10">
+    <!-- Voltar e caminho de navegação -->
+    <nav class="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+      <a href="index.html" class="rounded-full menu-ativo font-semibold px-3 py-1">← Voltar</a>
+      <span><a href="index.html" class="hover:underline">Início</a> <span aria-hidden="true">/</span> <span class="text-slate-900">Trabalhar em Eventos</span></span>
+    </nav>
+
+    <section class="rounded-lg fundo-grafite-claro overflow-hidden grid lg:grid-cols-2">
+      <img src="imagens/convento-sao-francisco.jpg" alt="Convento São Francisco, um dos espaços de congressos da cidade" class="foto-faixa">
+      <div class="p-6 flex flex-col gap-3 justify-center">
+        <p class="text-xs uppercase tracking-widest font-semibold text-slate-600">Hospedeiras e staff</p>
+        <h1 class="text-3xl sm:text-4xl tracking-tight">Trabalhar em eventos em Coimbra</h1>
+        <p class="text-slate-600">Congressos, concertos, feiras e jogos precisam de pessoas na receção, na credenciação e nas salas. Vê as oportunidades abertas, candidata-te ou pede equipa para o teu evento.</p>
+        <div class="flex flex-wrap gap-2 mt-1">
+          <a href="#oportunidades" class="rounded botao-escuro font-semibold px-4 py-2">Ver oportunidades</a>
+          <a href="#preciso-de-equipa" class="rounded border border-slate-900 bg-white font-semibold px-4 py-2 hover:bg-slate-100">Preciso de equipa</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Oportunidades abertas -->
+    <section id="oportunidades" class="scroll-mt-24 flex flex-col gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-2 border-b border-slate-300 py-2">
+          <div class="flex flex-col gap-1">
+            <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Oportunidades</p>
+            <h2 class="text-3xl">Oportunidades abertas</h2>
+            <p class="text-slate-500">4 oportunidades · 21 vagas por preencher</p>
+          </div>
+        </div>
+      <ul class="grid gap-6 md:grid-cols-2">
+        <li class="rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-3">
+          <div class="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Congresso de Saúde Digital</p>
+              <h3 class="text-xl leading-tight">Hospedeira de congresso</h3>
+            </div>
+            <span class="rounded-full fundo-terracota-clara texto-terracota text-xs font-semibold px-2 py-0.5">4 vagas</span>
+          </div>
+          <dl class="grid grid-cols-2 gap-2 text-sm">
+            <div><dt class="text-xs text-slate-500">Quando</dt><dd>Qui, 19 nov · 08:00 às 18:00</dd></div>
+            <div><dt class="text-xs text-slate-500">Onde</dt><dd>Convento São Francisco</dd></div>
+            <div><dt class="text-xs text-slate-500">Remuneração</dt><dd class="font-semibold">75 € por dia</dd></div>
+          </dl>
+          <p class="text-sm text-slate-600">Receção e credenciação dos participantes. Português e inglês fluentes.</p>
+          <a href="#candidatura" class="rounded botao-escuro font-semibold px-4 py-2 text-center">Candidatar-me</a>
+        </li>
+        <li class="rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-3">
+          <div class="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Orquestra de Câmara: de Vivaldi a Piazzolla</p>
+              <h3 class="text-xl leading-tight">Assistente de sala</h3>
+            </div>
+            <span class="rounded-full fundo-terracota-clara texto-terracota text-xs font-semibold px-2 py-0.5">6 vagas</span>
+          </div>
+          <dl class="grid grid-cols-2 gap-2 text-sm">
+            <div><dt class="text-xs text-slate-500">Quando</dt><dd>Sáb, 14 nov · 19:30 às 23:30</dd></div>
+            <div><dt class="text-xs text-slate-500">Onde</dt><dd>Convento São Francisco</dd></div>
+            <div><dt class="text-xs text-slate-500">Remuneração</dt><dd class="font-semibold">40 €</dd></div>
+          </dl>
+          <p class="text-sm text-slate-600">Acolher o público e indicar os lugares na sala.</p>
+          <a href="#candidatura" class="rounded botao-escuro font-semibold px-4 py-2 text-center">Candidatar-me</a>
+        </li>
+        <li class="rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-3">
+          <div class="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Académica: jogo em casa</p>
+              <h3 class="text-xl leading-tight">Staff de bilheteira</h3>
+            </div>
+            <span class="rounded-full fundo-terracota-clara texto-terracota text-xs font-semibold px-2 py-0.5">8 vagas</span>
+          </div>
+          <dl class="grid grid-cols-2 gap-2 text-sm">
+            <div><dt class="text-xs text-slate-500">Quando</dt><dd>Sáb, 14 nov · 13:00 às 18:00</dd></div>
+            <div><dt class="text-xs text-slate-500">Onde</dt><dd>Estádio Cidade de Coimbra</dd></div>
+            <div><dt class="text-xs text-slate-500">Remuneração</dt><dd class="font-semibold">45 €</dd></div>
+          </dl>
+          <p class="text-sm text-slate-600">Controlo de entradas e apoio aos adeptos nas portas.</p>
+          <a href="#candidatura" class="rounded botao-escuro font-semibold px-4 py-2 text-center">Candidatar-me</a>
+        </li>
+        <li class="rounded-lg border border-slate-200 bg-white p-5 flex flex-col gap-3">
+          <div class="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Prova de Vinhos da Bairrada</p>
+              <h3 class="text-xl leading-tight">Promotor</h3>
+            </div>
+            <span class="rounded-full fundo-terracota-clara texto-terracota text-xs font-semibold px-2 py-0.5">3 vagas</span>
+          </div>
+          <dl class="grid grid-cols-2 gap-2 text-sm">
+            <div><dt class="text-xs text-slate-500">Quando</dt><dd>Sex, 20 nov · 17:00 às 22:00</dd></div>
+            <div><dt class="text-xs text-slate-500">Onde</dt><dd>Mercado Municipal D. Pedro V</dd></div>
+            <div><dt class="text-xs text-slate-500">Remuneração</dt><dd class="font-semibold">50 €</dd></div>
+          </dl>
+          <p class="text-sm text-slate-600">Apresentar os produtores e orientar os visitantes.</p>
+          <a href="#candidatura" class="rounded botao-escuro font-semibold px-4 py-2 text-center">Candidatar-me</a>
+        </li>
+      </ul>
+    </section>
+
+    <div class="grid gap-8 lg:grid-cols-2 items-start">
+      <!-- Candidatura -->
+      <section id="candidatura" class="scroll-mt-24 rounded-lg border border-slate-200 bg-white p-6 flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Quero trabalhar em eventos</p>
+          <h2 class="text-3xl">Candidatura</h2>
+          <p class="text-sm text-slate-500">Guardamos o teu perfil e contactamos-te quando houver oportunidades à tua medida.</p>
+        </div>
+        <form action="#" method="post" class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <label for="cand-nome" class="text-sm font-medium">Nome completo <span class="text-red-700">*</span></label>
+            <input id="cand-nome" name="cand-nome" type="text" required minlength="3" class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+          <div class="flex flex-col gap-1">
+            <label for="cand-email" class="text-sm font-medium">Email <span class="text-red-700">*</span></label>
+            <input id="cand-email" name="cand-email" type="email" required autocomplete="email" class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="cand-telefone" class="text-sm font-medium">Telefone <span class="text-red-700">*</span></label>
+            <input id="cand-telefone" name="cand-telefone" type="text" required class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          </div>
+          <fieldset class="flex flex-col gap-2">
+            <legend class="text-sm font-medium mb-2">Funções que te interessam</legend>
+            <div class="grid gap-2 grid-cols-2">
+            <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="funcoes" value="hospedeira" class="h-4 w-4">Hospedeira</label>
+            <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="funcoes" value="sala" class="h-4 w-4">Assistente de sala</label>
+            <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="funcoes" value="bilheteira" class="h-4 w-4">Bilheteira</label>
+            <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="funcoes" value="promotor" class="h-4 w-4">Promotor</label>
+            <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="funcoes" value="montagem" class="h-4 w-4">Montagem</label>
+            <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="funcoes" value="bar" class="h-4 w-4">Bar</label>
+            </div>
+          </fieldset>
+          <div class="flex flex-col gap-1">
+            <label for="cand-disponibilidade" class="text-sm font-medium">Disponibilidade <span class="text-red-700">*</span></label>
+            <select id="cand-disponibilidade" name="cand-disponibilidade" required class="rounded border border-slate-300 bg-slate-50 px-3 py-2"><option value="">Escolhe uma opção</option><option value="semana">Dias de semana</option><option value="fds">Fins de semana</option><option value="sempre">Qualquer dia</option></select>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="cand-experiencia" class="text-sm font-medium">Experiência <span class="text-slate-500 font-normal">(opcional)</span></label>
+            <textarea id="cand-experiencia" name="cand-experiencia" rows="3" maxlength="400" placeholder="ex.: Fiz receção em dois congressos na Universidade." class="rounded border border-slate-300 bg-slate-50 px-3 py-2"></textarea>
+          </div>
+          <button type="submit" class="rounded botao-escuro font-semibold px-5 py-2.5 cursor-pointer">Enviar candidatura</button>
+        </form>
+      </section>
+
+      <!-- Pedido de equipa -->
+      <section id="preciso-de-equipa" class="scroll-mt-24 rounded-lg fundo-areia p-6 flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Para organizadores</p>
+          <h2 class="text-3xl">Preciso de equipa</h2>
+          <p class="text-sm text-slate-500">Depois de validado, o pedido é publicado como oportunidade e começa a receber candidaturas.</p>
+        </div>
+        <form action="#" method="post" class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1">
+            <label for="eq-empresa" class="text-sm font-medium">Empresa ou organizador <span class="text-red-700">*</span></label>
+            <input id="eq-empresa" name="eq-empresa" type="text" required class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="eq-evento" class="text-sm font-medium">Nome do evento <span class="text-red-700">*</span></label>
+            <input id="eq-evento" name="eq-evento" type="text" required class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+          <div class="flex flex-col gap-1">
+            <label for="eq-data" class="text-sm font-medium">Data <span class="text-red-700">*</span></label>
+            <input id="eq-data" name="eq-data" type="date" required class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="eq-vagas" class="text-sm font-medium">Número de pessoas <span class="text-red-700">*</span></label>
+            <input id="eq-vagas" name="eq-vagas" type="number" required min="1" max="50" class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="eq-funcao" class="text-sm font-medium">Função <span class="text-red-700">*</span></label>
+            <select id="eq-funcao" name="eq-funcao" required class="rounded border border-slate-300 bg-slate-50 px-3 py-2"><option value="">Escolhe a função</option><option value="hospedeira">Hospedeira</option><option value="sala">Assistente de sala</option><option value="bilheteira">Bilheteira</option><option value="promotor">Promotor</option><option value="montagem">Montagem</option></select>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="eq-email" class="text-sm font-medium">Email de contacto <span class="text-red-700">*</span></label>
+            <input id="eq-email" name="eq-email" type="email" required autocomplete="email" class="rounded border border-slate-300 bg-slate-50 px-3 py-2">
+          </div>
+          <button type="submit" class="rounded botao-escuro font-semibold px-5 py-2.5 cursor-pointer">Enviar pedido</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="fundo-azul mt-8">
+    <div class="mx-auto max-w-6xl px-4 py-12 grid gap-8 lg:grid-cols-2">
+      <div class="flex flex-col items-start gap-4">
+        <img src="imagens/logo/coimbra-360-completo.png" alt="Coimbra 360, a cidade toda, num só lugar" class="logo-rodape">
+        <p class="text-sm text-slate-600">Agenda, cultura, gastronomia e lugares para descobrir em Coimbra.</p>
+      </div>
+      <div class="grid gap-6 grid-cols-2 sm:grid-cols-3">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Agenda</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="eventos.html" class="hover:underline">Hoje</a></li>
+            <li><a href="eventos.html" class="hover:underline">Este fim de semana</a></li>
+            <li><a href="eventos.html" class="hover:underline">Gratuitos</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Coimbra</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="descobrir.html" class="hover:underline">Explorar Coimbra</a></li>
+            <li><a href="descobrir.html" class="hover:underline">48 horas em Coimbra</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Participar</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="publicar.html" class="hover:underline">Publicar evento</a></li>
+            <li><a href="trabalhar.html" class="hover:underline">Trabalhar em eventos</a></li>
+            <li><a href="trabalhar.html#preciso-de-equipa" class="hover:underline">Preciso de equipa</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex flex-wrap justify-between gap-2 border-t border-slate-300">
+      <p> 2026 Coimbra 360</p>
+      <p> Projeto académico de Desenvolvimento para a Web · Eventos em Coimbra </p>
+    </div>
+  </footer>
+</body>
+</html>

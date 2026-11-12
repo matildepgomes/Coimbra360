@@ -1,0 +1,240 @@
+*{
+    font-family: 'Public Sans', Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Títulos e datas */
+h1, h2, h3, .dia, .destaque-titulo, .titulo-evento{
+    font-family: 'Newsreader', Georgia, serif;
+    font-weight: 500;
+}
+
+/* Cores */
+.fundo-creme{ background-color: #FBF8F4; }
+.fundo-areia{ background-color: #F6E3DA; }
+.fundo-azul{ background-color: #CBD9E3; }
+.fundo-terracota-clara{ background-color: #E3ECF2; }
+.fundo-grafite-claro{ background-color: #E3ECF2; }
+.texto-grafite{ color: #2F4552; }
+.texto-terracota{ color: #A9583A; }
+
+/* Ligação do menu da página atual */
+.link-ativo{
+    color: #A9583A;
+    text-decoration: underline;
+}
+
+.menu-ativo{
+    background-color: #F6E3DA;
+    color: #7A3E28;
+}
+
+.botao-escuro{
+    background-color: #2F4552;
+    color: white;
+}
+.botao-escuro:hover{ background-color: #22343F; }
+
+.botao-terracota-claro{
+    background-color: #F2CDBB;
+    color: #7A3E28;
+}
+.botao-terracota-claro:hover{ background-color: #EBBDA7; }
+
+/* Logótipo */
+.logo{ height: 40px; width: auto; }
+.logo-rodape{ height: 90px; width: auto; }
+
+/* Imagem principal com o texto por cima */
+#destaque{
+    position: relative;
+    height: 480px;
+    overflow: hidden;
+    background-color: #2F4552;
+}
+#destaque img{
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: center center;
+}
+.destaque-sombra{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 38, 45, .38);
+}
+.destaque-texto{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 90%;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+.destaque-titulo{
+    margin: .6rem 0;
+    font-size: 3em;
+    line-height: 1.05em;
+}
+.destaque-descricao{
+    font-size: 1.05rem;
+    line-height: 1.5rem;
+}
+.destaque-credito{
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: white;
+}
+
+/* A caixa de pesquisa sobe e fica por cima do fundo da imagem */
+.caixa-pesquisa{
+    position: relative;
+    margin-top: -70px;
+}
+.campo-pesquisa{
+    width: 100%;
+    padding: 4px 0;
+    border: none;
+    background-color: white;
+    font-size: 1rem;
+}
+
+/* Calendário da agenda */
+.mes-calendario{ font-family: 'Newsreader', Georgia, serif; }
+.celula-dia{ height: 40px; }
+.dia-calendario{
+    display: block;
+    padding: 2px 0;
+    border-radius: 8px;
+}
+.dia-calendario:hover{ background-color: #F6E3DA; }
+.dia-hoje{
+    font-weight: 700;
+    text-decoration: underline;
+}
+.dia-passado{
+    color: #9AA5AD;
+    cursor: default;
+}
+.dia-passado:hover{ background-color: transparent; }
+.dia-escolhido{
+    background-color: #2F4552;
+    color: white;
+}
+.dia-escolhido:hover{ background-color: #22343F; }
+.ponto-evento{
+    display: block;
+    width: 4px;
+    height: 4px;
+    margin: 2px auto 0 auto;
+    border-radius: 50%;
+    background-color: #A9583A;
+}
+
+/* Cartões de evento */
+.foto-cartao{
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #EEF1F3;
+}
+.foto-cartao-grande{
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #EEF1F3;
+}
+.marca-foto{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background-color: white;
+}
+.bloco-data{ width: 44px; }
+.dia{
+    font-size: 1.9rem;
+    line-height: 2rem;
+}
+.linha-vertical{
+    width: 1px;
+    background-color: #E2D6CC;
+}
+
+/* Outras fotografias */
+.foto-categoria{
+    display: block;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    background-color: #EEF1F3;
+}
+.foto-miniatura{
+    width: 84px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: #EEF1F3;
+}
+.foto-faixa{
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    background-color: #E3E8EC;
+}
+.foto-evento{
+    display: block;
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 16px;
+    background-color: #EEF1F3;
+}
+
+/* Página do evento */
+.titulo-evento{
+    font-size: 2.2em;
+    line-height: 1.1em;
+}
+.linha-info{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    padding: 12px 0;
+}
+.rotulo-info{
+    width: 130px;
+    padding: 4px 0 0 0;
+}
+
+
+/* Ecrãs maiores */
+@media(min-width: 648px){
+    .destaque-titulo{ font-size: 4em; }
+    .destaque-descricao{ width: 70%; }
+    .foto-cartao-grande{ height: 400px; }
+    .foto-evento{ height: 420px; }
+    .titulo-evento{ font-size: 3em; }
+}
+
+@media(min-width: 1024px){
+    #destaque, #destaque img{ height: 620px; }
+    .destaque-texto{ width: 86%; top: 52%; }
+    .destaque-titulo{ font-size: 5em; width: 50%; }
+    .destaque-descricao{ width: 45%; }
+    .caixa-pesquisa{ margin-top: -130px; }
+    .foto-categoria{ height: 170px; }
+    .foto-cartao-grande{ height: 460px; }
+    .foto-faixa{ height: 100%; }
+    .foto-evento{ height: 520px; }
+}

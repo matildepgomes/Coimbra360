@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início · Coimbra 360</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="css/coimbra.css">
+  <script src="js/menu.js" defer></script>
+  <script src="js/calendario.js" defer></script>
+</head>
+<body class="fundo-creme texto-grafite antialiased">
+
+  <!-- Cabeçalho (sticky top-0: fica preso no topo ao fazer scroll) -->
+  <header class="sticky top-0 z-30 bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+      <a href="index.html">
+        <img src="imagens/logo/coimbra-360.png" alt="Coimbra 360, página inicial" class="logo">
+      </a>
+      <!-- Botão do menu: só aparece no telemóvel -->
+      <button type="button" id="menu-botao" aria-expanded="false" aria-controls="menu-principal" class="md:hidden rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 aria-expanded:bg-slate-900 aria-expanded:text-white aria-expanded:border-slate-900">
+        <span id="menu-icone" aria-hidden="true">☰</span> Menu
+      </button>
+      <nav id="menu-principal" class="hidden md:block w-full md:w-auto">
+        <ul class="flex flex-col md:flex-row md:items-center gap-1 text-sm border-t border-slate-200 pt-3 md:border-0 md:pt-0">
+          <li><a href="index.html" aria-current="page" class="block px-3 py-1.5 link-ativo font-medium">Início</a></li>
+          <li><a href="eventos.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Eventos</a></li>
+          <li><a href="descobrir.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Explorar Coimbra</a></li>
+          <li><a href="mapa.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Mapa</a></li>
+          <li><a href="trabalhar.html" class="block px-3 py-1.5 texto-grafite hover:text-slate-900 hover:underline">Trabalhar em Eventos</a></li>
+          <li><a href="favoritos.html" class="block rounded-full px-3 py-1.5 text-lg hover:bg-slate-100">♡<span class="sr-only">Favoritos</span></a></li>
+          <li><a href="publicar.html" class="block rounded-full px-5 py-2 botao-escuro font-semibold">Publicar evento</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex flex-col gap-10">
+
+    <!-- Imagem principal com o texto por cima -->
+    <section id="destaque">
+      <img src="imagens/coimbra-mondego.png" alt="Coimbra vista do Mondego, com a Alta, a Universidade e a ponte de Santa Clara">
+      <div class="destaque-sombra"></div>
+      <div class="destaque-texto">
+        <p class="text-xs uppercase tracking-widest font-semibold">Coimbra, quinta-feira, 12 de novembro</p>
+        <h1 class="destaque-titulo">Coimbra acontece <span class="italic">aqui.</span></h1>
+        <p class="destaque-descricao">Concertos, teatro, desporto, gastronomia e os lugares que fazem a cidade. Tudo o que se passa em Coimbra, reunido por quem a conhece.</p>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-6xl px-4 w-full flex flex-col gap-10">
+
+      <!-- Pesquisa por cima da imagem -->
+      <section class="caixa-pesquisa flex flex-col gap-4">
+        <form action="eventos.html" method="get" class="rounded-lg border border-slate-200 bg-white p-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-4 items-center">
+          <div class="flex flex-col gap-1 px-3 py-2 border-b border-slate-200 md:border-0">
+            <label for="q" class="text-xs uppercase tracking-widest font-semibold text-slate-500">O que procuras?</label>
+            <input id="q" name="q" type="search" placeholder="Fado, teatro, Académica…" class="campo-pesquisa focus:outline-none">
+          </div>
+          <div class="relative flex flex-col gap-1 px-3 py-2 border-b border-slate-200 md:border-0">
+            <label for="quando-botao" class="text-xs uppercase tracking-widest font-semibold text-slate-500">Quando?</label>
+            <button type="button" id="quando-botao" aria-expanded="false" aria-controls="quando-calendario" class="campo-pesquisa flex items-center gap-2 text-left cursor-pointer focus:outline-none">
+              <span id="quando-texto">Qualquer dia</span>
+              <span class="text-xs" aria-hidden="true">▾</span>
+            </button>
+            <input type="hidden" id="quando" name="quando" value="">
+
+            <!-- Calendário: escondido até se carregar no botão; os dias são criados em js/calendario.js -->
+            <div id="quando-calendario" class="hidden absolute left-0 top-full z-20 mt-2 w-80 rounded-lg border border-slate-200 bg-white p-4 shadow-md">
+              <div class="flex items-center justify-between">
+                <button type="button" id="calendario-anterior" class="rounded-full px-3 py-1 text-lg hover:bg-slate-100 cursor-pointer">‹<span class="sr-only">Mês anterior</span></button>
+                <p id="calendario-mes" class="text-xl mes-calendario"></p>
+                <button type="button" id="calendario-seguinte" class="rounded-full px-3 py-1 text-lg hover:bg-slate-100 cursor-pointer">›<span class="sr-only">Mês seguinte</span></button>
+              </div>
+              <table class="w-full mt-2 text-sm text-center">
+                <thead>
+                  <tr><th scope="col" class="py-1 text-xs font-semibold text-slate-500">S</th><th scope="col" class="py-1 text-xs font-semibold text-slate-500">T</th><th scope="col" class="py-1 text-xs font-semibold text-slate-500">Q</th><th scope="col" class="py-1 text-xs font-semibold text-slate-500">Q</th><th scope="col" class="py-1 text-xs font-semibold text-slate-500">S</th><th scope="col" class="py-1 text-xs font-semibold text-slate-500">S</th><th scope="col" class="py-1 text-xs font-semibold text-slate-500">D</th></tr>
+                </thead>
+                <tbody id="calendario-dias"></tbody>
+              </table>
+              <div class="flex items-center justify-between mt-3">
+                <button type="button" id="calendario-limpar" class="px-2 py-1.5 text-slate-500 hover:text-slate-900 cursor-pointer">Limpar</button>
+                <button type="button" id="calendario-feito" class="rounded-full botao-escuro font-semibold px-5 py-2 cursor-pointer">Feito</button>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1 px-3 py-2">
+            <label for="categoria" class="text-xs uppercase tracking-widest font-semibold text-slate-500">Categoria</label>
+            <select id="categoria" name="categoria" class="campo-pesquisa focus:outline-none"><option>Todas as categorias</option><option>Música</option><option>Teatro, Cinema e Exposições</option><option>Desporto</option><option>Festas e Vida Noturna</option><option>Gastronomia</option><option>Tradições, Feiras e Mercados</option><option>Família e Crianças</option><option>Universidade e Vida Académica</option><option>Natureza e Ar Livre</option><option>Conferências, Formação e Negócios</option></select>
+          </div>
+          <button type="submit" class="rounded-full botao-escuro font-semibold px-5 py-2.5 cursor-pointer">⌕ Pesquisar</button>
+        </form>
+        <nav class="flex flex-wrap justify-center gap-2 text-sm">
+          <a href="eventos.html" class="rounded-full border border-slate-300 bg-white px-3 py-1 hover:bg-slate-100">Hoje</a>
+          <a href="eventos.html" class="rounded-full border border-slate-300 bg-white px-3 py-1 hover:bg-slate-100">Amanhã</a>
+          <a href="eventos.html" class="rounded-full border border-slate-300 bg-white px-3 py-1 hover:bg-slate-100">Este fim de semana</a>
+          <a href="eventos.html" class="rounded-full border border-slate-300 bg-white px-3 py-1 hover:bg-slate-100">Gratuitos</a>
+        </nav>
+      </section>
+
+      <!-- Agenda -->
+      <section class="flex flex-col gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-2 border-b border-slate-300 py-2">
+          <div class="flex flex-col gap-1">
+            <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Agenda</p>
+            <h2 class="text-3xl">O que está a acontecer em Coimbra</h2>
+            <p class="text-slate-500">Semana de 12 a 18 de novembro · 12 eventos</p>
+          </div>
+          <a href="eventos.html" class="text-sm font-semibold hover:underline">Ver agenda completa →</a>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-5">
+          <div class="lg:col-span-3">
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/mosteiro-santa-cruz.jpg" alt="Praça 8 de Maio e Mosteiro de Santa Cruz" class="foto-cartao-grande">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Hoje</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">12</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Tradições, Feiras e Mercados</p>
+                  <h3 class="text-3xl leading-tight">Mercado ao Fim da Tarde</h3>
+                  <p class="text-sm text-slate-500">18:00 · Mercado Municipal D. Pedro V</p>
+                  <p class="text-sm font-semibold">Grátis</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <ul class="lg:col-span-2 flex flex-col gap-6">
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/se-velha.jpg" alt="Fachada da Sé Velha de Coimbra" class="foto-cartao">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Hoje</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">12</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Música</p>
+                  <h3 class="text-xl leading-tight">Serenata de Outono na Sé Velha</h3>
+                  <p class="text-sm text-slate-500">21:30 · Largo da Sé Velha</p>
+                  <p class="text-sm font-semibold">Grátis</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/rua-quebra-costas.jpg" alt="Rua do Quebra Costas" class="foto-cartao">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Hoje</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">12</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Festas e Vida Noturna</p>
+                  <h3 class="text-xl leading-tight">Jazz no Salão: Trio de Outono</h3>
+                  <p class="text-sm text-slate-500">22:30 · Salão Brazil</p>
+                  <p class="text-sm font-semibold">8 €</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          </ul>
+        </div>
+        <ul class="grid gap-6 sm:grid-cols-3">
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/biblioteca-joanina.jpg" alt="Interior da Biblioteca Joanina" class="foto-cartao">
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">13</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Natureza e Ar Livre</p>
+                  <h3 class="text-xl leading-tight">Visita Noturna ao Paço das Escolas</h3>
+                  <p class="text-sm text-slate-500">19:00 · Paço das Escolas</p>
+                  <p class="text-sm font-semibold">15 €</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/igreja-santa-cruz-azulejos.jpg" alt="Azulejos da Igreja de Santa Cruz" class="foto-cartao">
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">13</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Teatro, Cinema e Exposições</p>
+                  <h3 class="text-xl leading-tight">Ciclo de Cinema Europeu</h3>
+                  <p class="text-sm text-slate-500">21:30 · Teatro Académico de Gil Vicente</p>
+                  <p class="text-sm font-semibold">4 €</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/estadio-cidade-coimbra.jpg" alt="Estádio Cidade de Coimbra" class="foto-cartao">
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">14</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Desporto</p>
+                  <h3 class="text-xl leading-tight">Académica: jogo em casa</h3>
+                  <p class="text-sm text-slate-500">15:30 · Estádio Cidade de Coimbra</p>
+                  <p class="text-sm font-semibold">desde 10 €</p>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Categorias -->
+      <section class="flex flex-col gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-2 border-b border-slate-300 py-2">
+          <div class="flex flex-col gap-1">
+            <h2 class="text-3xl">Encontra o teu plano</h2>
+            <p class="text-slate-500">Escolhe uma área. Na agenda podes depois afinar por subcategoria.</p>
+          </div>
+        </div>
+        <ul class="grid gap-4 grid-cols-2 lg:grid-cols-5">
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/convento-sao-francisco.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Música</h3>
+                <p class="text-xs text-slate-500">Concertos · Fado de Coimbra</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/igreja-santa-cruz-azulejos.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Teatro, Cinema e Exposições</h3>
+                <p class="text-xs text-slate-500">Teatro · Cinema · Exposições</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/estadio-cidade-coimbra.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Desporto</h3>
+                <p class="text-xs text-slate-500">Futebol e Académica · Futsal</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/rua-quebra-costas.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Festas e Vida Noturna</h3>
+                <p class="text-xs text-slate-500">Festas · Bares e música ao vivo</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/leitao-bairrada.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Gastronomia</h3>
+                <p class="text-xs text-slate-500">Experiências · Provas</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/mosteiro-santa-cruz.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Tradições, Feiras e Mercados</h3>
+                <p class="text-xs text-slate-500">Tradições · Feiras e mercados</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/portugal-dos-pequenitos.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Família e Crianças</h3>
+                <p class="text-xs text-slate-500">Atividades para crianças</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/estudantes-coimbra.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Universidade e Vida Académica</h3>
+                <p class="text-xs text-slate-500">Vida académica · Universidade</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/jardim-botanico.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Natureza e Ar Livre</h3>
+                <p class="text-xs text-slate-500">Passeios e visitas · Natureza</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="eventos.html" class="h-full rounded-lg overflow-hidden border border-slate-200 bg-white flex flex-col hover:shadow-md transition-shadow">
+              <img src="imagens/paco-das-escolas.jpg" alt="" class="foto-categoria">
+              <div class="p-4 flex flex-col gap-1 fundo-creme flex-1">
+                <h3 class="text-lg leading-tight">Conferências, Formação e Negócios</h3>
+                <p class="text-xs text-slate-500">Conferências · Congressos</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Faz o teu plano -->
+      <section class="rounded-lg overflow-hidden border border-slate-200 bg-white grid lg:grid-cols-2">
+        <div class="fundo-terracota-clara p-6 flex flex-col gap-4 justify-center">
+          <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Faz o teu plano</p>
+          <h2 class="text-4xl">Não sabes o que fazer? Diz-nos o que te apetece.</h2>
+          <p class="text-slate-600">Quando, com quem, o que procuras, quanto tempo tens e quanto queres gastar. O Coimbra 360 junta um evento a sítios perto dele e sugere um plano.</p>
+        </div>
+        <form action="eventos.html" method="get" class="p-6 flex flex-col gap-4">
+            <fieldset class="flex flex-col gap-2">
+              <legend class="text-xs uppercase tracking-widest font-semibold text-slate-500 mb-2">Quando?</legend>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer"><input type="radio" name="plano-quando" value="0" class="peer sr-only" checked><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Hoje</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-quando" value="1" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Amanhã</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-quando" value="2" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Fim de semana</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="flex flex-col gap-2">
+              <legend class="text-xs uppercase tracking-widest font-semibold text-slate-500 mb-2">Com quem vais?</legend>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer"><input type="radio" name="plano-companhia" value="0" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Sozinho</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-companhia" value="1" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Casal</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-companhia" value="2" class="peer sr-only" checked><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Amigos</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-companhia" value="3" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Família</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="flex flex-col gap-2">
+              <legend class="text-xs uppercase tracking-widest font-semibold text-slate-500 mb-2">O que te apetece?</legend>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer"><input type="radio" name="plano-apetece" value="0" class="peer sr-only" checked><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Cultura</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-apetece" value="1" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Música</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-apetece" value="2" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Comer</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-apetece" value="3" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Diversão</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-apetece" value="4" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Passear</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-apetece" value="5" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Noite</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="flex flex-col gap-2">
+              <legend class="text-xs uppercase tracking-widest font-semibold text-slate-500 mb-2">Quanto tempo tens?</legend>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer"><input type="radio" name="plano-tempo" value="0" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">1 hora</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-tempo" value="1" class="peer sr-only" checked><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">2 a 3 horas</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-tempo" value="2" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Meio dia</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-tempo" value="3" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Dia inteiro</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="flex flex-col gap-2">
+              <legend class="text-xs uppercase tracking-widest font-semibold text-slate-500 mb-2">Orçamento</legend>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer"><input type="radio" name="plano-orcamento" value="0" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Grátis</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-orcamento" value="1" class="peer sr-only"><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Até 15 €</span></label>
+                <label class="cursor-pointer"><input type="radio" name="plano-orcamento" value="2" class="peer sr-only" checked><span class="block rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm peer-checked:bg-sky-700 peer-checked:border-sky-700 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-sky-600">Indiferente</span></label>
+              </div>
+            </fieldset>
+          <div>
+            <button type="submit" class="rounded-full botao-escuro font-semibold px-5 py-2.5 cursor-pointer">Encontrar o meu plano</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- Este fim de semana -->
+    <section class="fundo-azul py-12">
+      <div class="mx-auto max-w-6xl px-4 flex flex-col gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-2 border-b border-slate-300 py-2">
+          <div class="flex flex-col gap-1">
+            <h2 class="text-3xl">Este fim de semana</h2>
+            <p class="text-slate-500">Uma seleção para sábado e domingo.</p>
+          </div>
+          <a href="eventos.html" class="text-sm font-semibold hover:underline">Tudo para o fim de semana →</a>
+        </div>
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/mosteiro-santa-cruz.jpg" alt="Mosteiro de Santa Cruz, na Baixa" class="foto-cartao">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Gratuito</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">14</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Teatro, Cinema e Exposições</p>
+                  <h3 class="text-xl leading-tight">Exposição: O Azulejo em Coimbra</h3>
+                  <p class="text-sm text-slate-500">10:00 · Mosteiro de Santa Cruz</p>
+                  <p class="text-sm font-semibold">Grátis</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/estadio-cidade-coimbra.jpg" alt="Estádio Cidade de Coimbra" class="foto-cartao">
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">14</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Desporto</p>
+                  <h3 class="text-xl leading-tight">Académica: jogo em casa</h3>
+                  <p class="text-sm text-slate-500">15:30 · Estádio Cidade de Coimbra</p>
+                  <p class="text-sm font-semibold">desde 10 €</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/coimbra-vista.jpg" alt="Vista sobre os telhados de Coimbra" class="foto-cartao">
+                <span class="marca-foto text-xs uppercase tracking-wider font-semibold">Gratuito</span>
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">14</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Natureza e Ar Livre</p>
+                  <h3 class="text-xl leading-tight">Passeio: Coimbra ao Entardecer</h3>
+                  <p class="text-sm text-slate-500">17:30 · Largo da Sé Velha</p>
+                  <p class="text-sm font-semibold">Grátis</p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="evento.html" class="flex flex-col gap-4">
+              <div class="relative">
+                <img src="imagens/convento-sao-francisco.jpg" alt="Igreja do Convento São Francisco" class="foto-cartao">
+              </div>
+              <div class="flex gap-3">
+                <div class="flex flex-col items-center bloco-data">
+                  <span class="dia">14</span>
+                  <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">nov</span>
+                </div>
+                <div class="linha-vertical"></div>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Música</p>
+                  <h3 class="text-xl leading-tight">Orquestra de Câmara: de Vivaldi a Piazzolla</h3>
+                  <p class="text-sm text-slate-500">21:00 · Convento São Francisco</p>
+                  <p class="text-sm font-semibold">18 €</p>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-6xl px-4 w-full flex flex-col gap-10">
+
+      <!-- Descobrir Coimbra -->
+      <section class="flex flex-col gap-6">
+        <div class="flex flex-wrap items-end justify-between gap-2 border-b border-slate-300 py-2">
+          <div class="flex flex-col gap-1">
+            <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Guias</p>
+            <h2 class="text-3xl">Descobre Coimbra</h2>
+            <p class="text-slate-500">Guias escritos para quem vive cá e para quem está de passagem.</p>
+          </div>
+          <a href="descobrir.html" class="text-sm font-semibold hover:underline">Todos os guias →</a>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-2">
+          <a href="descobrir.html" class="flex flex-col gap-3">
+            <img src="imagens/coimbra-e-mondego.jpg" alt="" class="foto-cartao-grande">
+            <p class="text-xs uppercase tracking-widest font-semibold texto-terracota">Roteiro</p>
+            <h3 class="text-3xl leading-tight">48 horas em Coimbra</h3>
+            <p class="text-slate-500">Da Alta universitária à margem de Santa Clara: um fim de semana a pé, sem pressa.</p>
+          </a>
+          <ul class="flex flex-col divide-y divide-slate-200 border-y border-slate-200">
+            <li>
+              <a href="descobrir.html" class="py-4 flex items-center gap-4 hover:underline">
+                <img src="imagens/leitao-bairrada.jpg" alt="" class="foto-miniatura">
+                <div class="flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold text-slate-500">Gastronomia</p>
+                  <h3 class="text-lg leading-tight">Onde jantar antes de um espetáculo</h3>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="descobrir.html" class="py-4 flex items-center gap-4 hover:underline">
+                <img src="imagens/estudantes-coimbra.jpg" alt="" class="foto-miniatura">
+                <div class="flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold text-slate-500">Universidade</p>
+                  <h3 class="text-lg leading-tight">Coimbra Académica</h3>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="descobrir.html" class="py-4 flex items-center gap-4 hover:underline">
+                <img src="imagens/portugal-dos-pequenitos.jpg" alt="" class="foto-miniatura">
+                <div class="flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold text-slate-500">Família</p>
+                  <h3 class="text-lg leading-tight">Coimbra com crianças</h3>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="descobrir.html" class="py-4 flex items-center gap-4 hover:underline">
+                <img src="imagens/biblioteca-joanina.jpg" alt="" class="foto-miniatura">
+                <div class="flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold text-slate-500">Sugestões</p>
+                  <h3 class="text-lg leading-tight">O que fazer num dia de chuva</h3>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="descobrir.html" class="py-4 flex items-center gap-4 hover:underline">
+                <img src="imagens/ponte-pedro-ines.jpg" alt="" class="foto-miniatura">
+                <div class="flex flex-col gap-1">
+                  <p class="text-xs uppercase tracking-widest font-semibold text-slate-500">Ar livre</p>
+                  <h3 class="text-lg leading-tight">Passeios junto ao Mondego</h3>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Trabalhar em eventos -->
+      <section class="rounded-lg fundo-grafite-claro overflow-hidden grid lg:grid-cols-2">
+        <img src="imagens/convento-sao-francisco.jpg" alt="Convento São Francisco, um dos espaços de congressos e espetáculos da cidade" class="foto-faixa">
+        <div class="p-6 flex flex-col gap-4 justify-center">
+          <p class="text-xs uppercase tracking-widest font-semibold text-slate-600">Hospedeiras e staff</p>
+          <h2 class="text-4xl">Trabalhar em eventos em Coimbra</h2>
+          <p class="text-slate-600">Congressos, concertos, feiras e jogos precisam de pessoas na receção, na credenciação e nas salas. Junta-te à equipa ou encontra equipa para o teu evento.</p>
+          <p class="text-slate-600">Neste momento há 4 oportunidades abertas e 21 vagas.</p>
+          <div class="flex flex-wrap gap-2 mt-1">
+            <a href="trabalhar.html" class="rounded-full botao-escuro font-semibold px-5 py-2.5">Quero trabalhar em eventos</a>
+            <a href="trabalhar.html#preciso-de-equipa" class="rounded-full border border-slate-300 font-semibold px-5 py-2.5 hover:bg-white">Preciso de equipa</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+    <!-- Rodapé -->
+  <footer class="fundo-azul mt-8">
+    <div class="mx-auto max-w-6xl px-4 py-12 grid gap-8 lg:grid-cols-2">
+      <div class="flex flex-col items-start gap-4">
+        <img src="imagens/logo/coimbra-360-completo.png" alt="Coimbra 360, a cidade toda, num só lugar" class="logo-rodape">
+        <p class="text-sm text-slate-600">Agenda, cultura, gastronomia e lugares para descobrir em Coimbra.</p>
+      </div>
+      <div class="grid gap-6 grid-cols-2 sm:grid-cols-3">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Agenda</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="eventos.html" class="hover:underline">Hoje</a></li>
+            <li><a href="eventos.html" class="hover:underline">Este fim de semana</a></li>
+            <li><a href="eventos.html" class="hover:underline">Gratuitos</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Coimbra</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="descobrir.html" class="hover:underline">Explorar Coimbra</a></li>
+            <li><a href="descobrir.html" class="hover:underline">48 horas em Coimbra</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xs uppercase tracking-widest font-semibold text-slate-500">Participar</h2>
+          <ul class="flex flex-col gap-1 text-sm">
+            <li><a href="publicar.html" class="hover:underline">Publicar evento</a></li>
+            <li><a href="trabalhar.html" class="hover:underline">Trabalhar em eventos</a></li>
+            <li><a href="trabalhar.html#preciso-de-equipa" class="hover:underline">Preciso de equipa</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-500 flex flex-wrap justify-between gap-2 border-t border-slate-300">
+      <p> 2026 Coimbra 360</p>
+      <p> Projeto académico de Desenvolvimento para a Web · Eventos em Coimbra </p>
+    </div>
+  </footer>
+</body>
+</html>
